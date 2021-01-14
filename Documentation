@@ -1,0 +1,59 @@
+import argparse
+1
+#Check user operating system
+import platform
+import os
+
+This code checks the operating system that the user has as well as the version/platform relsease and name
+print(os.name)
+print("Operating system is: " + platform.system())
+print(platform.release())
+
+
+2
+#Installation of Node.js, wget, curl
+#from pip(Python, pip, libcurl must be installed)  
+pip install wget
+import wget
+
+pip install pycurl
+import pycurl
+
+pip install nodejs
+import nodejs
+
+
+3
+#Check Which software has been installed on the PC
+This is Python code to get the installed software list in windows. The subprocess module is used to interact with cmd and to retrieve information into the Python IDE.
+# importing the module 
+import subprocess 
+  
+# traverse the software list 
+Data = subprocess.check_output(['wmic', 'product', 'get', 'name']) 
+i = str(Data) 
+  
+# try block 
+try: 
+    
+    # arrange the string 
+    for x in range(len(i)): 
+        print(i.split("\\r\\r\\n")[6:][x]) 
+  
+except IndexError as j: 
+    print("Complete")
+    
+4    
+#If Software has not been installed
+This code checks whether the software has been installed and if not it will look for the specified software and install it.
+import sys
+import subprocess
+import pkg_resources
+
+required = {'wget', 'nodejs','pycurl'}
+installed = {pkg.key for pkg in pkg_resources.working_set}
+missing = required - installed
+
+if missing:
+    python = sys.executable
+    subprocess.check_call([python, '-m', 'pip', 'install', *missing], stdout=subprocess.DEVNULL(to hide the output, redirect the subprocess output to devnull)
