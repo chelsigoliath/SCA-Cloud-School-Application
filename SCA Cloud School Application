@@ -1,0 +1,57 @@
+import argparse
+1
+#Check user operating system
+import platform
+import os
+
+
+print(os.name)
+print("Operating system is: " + platform.system())
+print(platform.release())
+
+
+2
+#Installation of Node.js, wget, curl
+#from pip(Python, pip, libcurl must be installed)  
+pip install wget
+import wget
+
+pip install pycurl
+import pycurl
+
+pip install nodejs
+import nodejs
+
+
+3
+#Check Which software has been installed on the PC
+
+# importing the module 
+import subprocess 
+  
+# traverse the software list 
+Data = subprocess.check_output(['wmic', 'product', 'get', 'name']) 
+i = str(Data) 
+  
+# try block 
+try: 
+    
+    # arrange the string 
+    for x in range(len(i)): 
+        print(i.split("\\r\\r\\n")[6:][x]) 
+  
+except IndexError as j: 
+    print("Complete")
+    
+#If Software has not been installed
+import sys
+import subprocess
+import pkg_resources
+
+required = {'wget', 'nodejs','pycurl'}
+installed = {pkg.key for pkg in pkg_resources.working_set}
+missing = required - installed
+
+if missing:
+    python = sys.executable
+    subprocess.check_call([python, '-m', 'pip', 'install', *missing], stdout=sub
